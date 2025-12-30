@@ -163,6 +163,25 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 3000); // Toggle every 3 seconds
     }
+
+    // Visitor Counter Simulation
+    const countDisplay = document.getElementById('visitor-count');
+    if (countDisplay) {
+        // Base count to make it look popular
+        const baseCount = 1042;
+
+        // Get actual visits from local storage
+        let localVisits = localStorage.getItem('site_visits');
+        if (!localVisits) localVisits = 0;
+
+        // Increment
+        localVisits = parseInt(localVisits) + 1;
+        localStorage.setItem('site_visits', localVisits);
+
+        // Display total
+        const totalViews = baseCount + localVisits;
+        countDisplay.textContent = totalViews.toLocaleString();
+    }
 });
 
 // Contact Pill Toggle
