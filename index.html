@@ -17,7 +17,10 @@
     <link rel="stylesheet" href="css/styles.css">
 </head>
 
-<body>
+<body class="light-mode">
+    <!-- Particle Background -->
+    <canvas id="particles-canvas"></canvas>
+
     <!-- Navbar -->
     <nav class="navbar">
         <div class="container nav-content">
@@ -75,9 +78,23 @@
         <div class="container">
             <h2 class="section-title">About Me</h2>
             <div class="about-content">
-                <p>I am a final-year <strong>Informatics Engineering student at Institut Teknologi Padang</strong>.
-                    Passionate about software development, I specialize in building responsive web applications. I am
-                    currently seeking opportunities to apply my skills and contribute to innovative projects.</p>
+                <!-- Text Slideshow -->
+                <div class="about-slider">
+                    <div class="about-slide active">
+                        <p>I am a final-year <strong>Informatics Engineering student at Institut Teknologi
+                                Padang</strong>.
+                            Passionate about software development, I specialize in building responsive web applications.
+                        </p>
+                    </div>
+                    <div class="about-slide">
+                        <p>My focus is on creating <strong>interactive and user-friendly interfaces</strong>.
+                            I love combining clean code with modern design principles to solve real-world problems.</p>
+                    </div>
+                    <div class="about-slide">
+                        <p>I am currently <strong>seeking opportunities</strong> to apply my full-stack skills
+                            and contribute to innovative projects in a collaborative team environment.</p>
+                    </div>
+                </div>
                 <div class="stats">
                     <div class="stat-item">
                         <h3>2+</h3>
@@ -125,16 +142,16 @@
     <!-- Education Section -->
     <section id="education" class="section">
         <div class="container">
-            <h2 class="section-title">Education</h2>
+            <h2 class="section-title scroll-reveal">Education</h2>
             <div class="cards-grid">
-                <div class="card">
+                <div class="card scroll-reveal">
                     <i class="fas fa-graduation-cap card-icon"></i>
                     <h3>Currently pursuing a Bachelor's degree in Informatics Engineering </h3>
                     <h4>Padang Institute of Technology</h4>
                     <span class="date">2022 - Coming Soon</span>
                     <p>Focusing on Software Engineering and Web Technologies. Hopefully, I'll graduate.</p>
                 </div>
-                <div class="card">
+                <div class="card scroll-reveal">
                     <i class="fas fa-certificate card-icon"></i>
                     <h3>Vocational Competency Certificate</h3>
                     <h4>SMKN 1 BATIPUH</h4>
@@ -148,9 +165,9 @@
     <!-- Skills Section -->
     <section id="skills" class="section bg-light">
         <div class="container">
-            <h2 class="section-title">Technical Skills</h2>
+            <h2 class="section-title scroll-reveal">Technical Skills</h2>
             <div class="skills-grid">
-                <div class="skill-category">
+                <div class="skill-category scroll-reveal">
                     <h3>Frontend</h3>
                     <div class="tags">
                         <span data-tooltip="HTML5"><i class="fab fa-html5"></i></span>
@@ -160,13 +177,13 @@
                         <span data-tooltip="Tailwind CSS"><i class="fas fa-wind"></i></span>
                     </div>
                 </div>
-                <div class="skill-category">
-                    <h3>Backend & Tools</h3>
+                <div class="skill-category scroll-reveal">
+                    <h3>Tools</h3>
                     <div class="tags">
-                        <span data-tooltip="Node.js"><i class="fab fa-node-js"></i></span>
-                        <span data-tooltip="Git/GitHub"><i class="fab fa-github"></i></span>
-                        <span data-tooltip="Figma"><i class="fab fa-figma"></i></span>
+                        <span data-tooltip="Git"><i class="fab fa-git-alt"></i></span>
                         <span data-tooltip="VS Code"><i class="fas fa-code"></i></span>
+                        <span data-tooltip="Figma"><i class="fab fa-figma"></i></span>
+                        <span data-tooltip="GitHub"><i class="fab fa-github"></i></span>
                     </div>
                 </div>
                 <div class="skill-category">
@@ -189,7 +206,7 @@
             <div class="github-container">
                 <p class="section-subtitle">Monthly Contributions (2025)</p>
 
-                <div class="chart-wrapper">
+                <div class="chart-wrapper scroll-reveal">
                     <svg class="chart-svg" viewBox="0 0 1200 400">
                         <!-- Grid Lines (optional background) -->
                         <line x1="50" y1="100" x2="1150" y2="100" stroke="#e2e8f0" stroke-width="1"
@@ -315,6 +332,39 @@
                     <a href="#" target="_blank" class="icon-btn" aria-label="Instagram">
                         <i class="fab fa-instagram"></i>
                     </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    </section>
+
+    <!-- Guestbook / Feedback Section -->
+    <section id="guestbook" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title scroll-reveal">Guestbook</h2>
+            <p class="section-subtitle">Leave a suggestion or just say hello!</p>
+
+            <div class="guestbook-container scroll-reveal">
+                <!-- Input Form -->
+                <form id="guestbook-form" class="guestbook-form">
+                    <div class="form-group">
+                        <input type="text" id="guest-name" placeholder="Your Name" required>
+                    </div>
+                    <div class="form-group">
+                        <textarea id="guest-message" placeholder="Write your suggestion or question here..." rows="3"
+                            required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary">Send Message <i class="fas fa-paper-plane"></i></button>
+                </form>
+
+                <!-- Comments Display -->
+                <div class="comments-area">
+                    <h3>Recent Messages</h3>
+                    <div id="comments-list" class="comments-list">
+                        <!-- Comments will be injected here by JS -->
+                        <div class="empty-state">No messages yet. Be the first!</div>
+                    </div>
                 </div>
             </div>
         </div>
