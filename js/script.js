@@ -167,8 +167,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Visitor Counter Simulation
     const countDisplay = document.getElementById('visitor-count');
     if (countDisplay) {
-        // Base count to make it look popular
-        const baseCount = 1042;
+        // Base count starts from zero
+        const baseCount = 0;
 
         // Get actual visits from local storage
         let localVisits = localStorage.getItem('site_visits');
@@ -180,7 +180,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Display total
         const totalViews = baseCount + localVisits;
-        countDisplay.textContent = totalViews.toLocaleString();
+        countDisplay.textContent = totalViews.toString();
     }
 });
 
