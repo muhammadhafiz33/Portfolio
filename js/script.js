@@ -1,3 +1,21 @@
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getFirestore, collection, addDoc, onSnapshot, query, orderBy, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+
+// --- Firebase Configuration ---
+const firebaseConfig = {
+    apiKey: "AIzaSyBso_SasiHHB2Z2rRe9MXATs8Md84w2khY",
+    authDomain: "portfolio-hafiz-5c86b.firebaseapp.com",
+    projectId: "portfolio-hafiz-5c86b",
+    storageBucket: "portfolio-hafiz-5c86b.firebasestorage.app",
+    messagingSenderId: "861471865210",
+    appId: "1:861471865210:web:0ca3c9e1db319211c9bec3",
+    measurementId: "G-FR7Q4VGXBX"
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
 document.addEventListener('DOMContentLoaded', () => {
     // Mobile Menu Toggle
     const menuToggle = document.querySelector('.menu-toggle');
@@ -71,11 +89,8 @@ document.addEventListener('DOMContentLoaded', () => {
             if (pageYOffset >= (sectionTop - 200)) {
                 current = section.getAttribute('id');
             }
-            // Logic to handle Home/Hero which might not have an ID but is at top
             if (section.classList.contains('hero') && pageYOffset < 300) {
-                // If clearly at top, ensure no other nav is active or if we had a Home link it would be valid.
-                // Currently we assume no link points to Hero directly via ID in the list except Logo?
-                // But wait, if scrolling down, the logic above finds the last section that matches.
+                // Hero logic
             }
         });
 
@@ -90,14 +105,16 @@ document.addEventListener('DOMContentLoaded', () => {
     // Dark Mode Toggle
     const themeToggle = document.getElementById('theme-toggle');
     const body = document.body;
-    const themeIcon = themeToggle.querySelector('i');
+    const themeIcon = themeToggle ? themeToggle.querySelector('i') : null; // Safe check
 
     // Check for saved theme
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme === 'dark') {
         body.classList.add('dark-mode');
-        themeIcon.classList.remove('fa-moon');
-        themeIcon.classList.add('fa-sun');
+        if (themeIcon) {
+            themeIcon.classList.remove('fa-moon');
+            themeIcon.classList.add('fa-sun');
+        }
     }
 
     if (themeToggle) {
@@ -133,7 +150,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // Calculate distance
         const dx = e.clientX - robotCenter.x;
         const dy = e.clientY - robotCenter.y;
-        const distance = Math.sqrt(dx * dx + dy * dy);
 
         // Eye Movement
         if (robotEyes) {
@@ -143,8 +159,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const eyeY = Math.sin(angle) * maxEyeMove;
             robotEyes.style.transform = `translate(${eyeX}px, ${eyeY}px)`;
         }
-
-        // Blur Effect removed as per user request
     });
 
     // Automated Robot Conversation Loop
@@ -167,11 +181,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // Realtime Visitor Counter (using CountAPI)
     const countDisplay = document.getElementById('visitor-count');
     if (countDisplay) {
-        // Unique identifier for this project
         const namespace = 'hafiz-portfolio-project-v1';
         const key = 'visits';
 
-        // Try to get global count
         fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
             .then(response => response.json())
             .then(data => {
@@ -179,7 +191,6 @@ document.addEventListener('DOMContentLoaded', () => {
             })
             .catch(error => {
                 console.log('Counter API unavailable, using local fallback');
-                // Fallback: Use local storage if API is blocked/down
                 let localVisits = localStorage.getItem('site_visits') || 0;
                 localVisits = parseInt(localVisits) + 1;
                 localStorage.setItem('site_visits', localVisits);
@@ -193,15 +204,13 @@ document.addEventListener('DOMContentLoaded', () => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('active');
-                // Removed unobserve to allow repeat
             } else {
-                // Remove class when out of view to reset animation
                 entry.target.classList.remove('active');
             }
         });
     }, {
         root: null,
-        threshold: 0.15, // Trigger when 15% visible
+        threshold: 0.15,
         rootMargin: "0px"
     });
 
@@ -209,8 +218,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Contact Pill Toggle
-function togglePill(element) {
-    // Optional: Close other pills when one is clicked
+window.togglePill = function (element) {
     const allPills = document.querySelectorAll('.contact-pill');
     allPills.forEach(pill => {
         if (pill !== element && pill.classList.contains('active')) {
@@ -218,7 +226,7 @@ function togglePill(element) {
         }
     });
     element.classList.toggle('active');
-}
+};
 
 // --- Particle Background Animation ---
 const canvas = document.getElementById('particles-canvas');
@@ -269,13 +277,10 @@ if (canvas) {
         }
 
         update() {
-            // Boundary Check
             if (this.x > canvas.width || this.x < 0) this.directionX = -this.directionX;
             if (this.y > canvas.height || this.y < 0) this.directionY = -this.directionY;
-
-            this.x += this.directionX * 0.5; // Moderate speed
+            this.x += this.directionX * 0.5;
             this.y += this.directionY * 0.5;
-
             this.draw();
         }
     }
@@ -292,7 +297,6 @@ if (canvas) {
     function animate() {
         requestAnimationFrame(animate);
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-
         for (let i = 0; i < particlesArray.length; i++) {
             particlesArray[i].update();
         }
@@ -324,7 +328,6 @@ if (canvas) {
         init();
     });
 
-
     init();
     animate();
 }
@@ -335,78 +338,124 @@ if (aboutSlides.length > 0) {
     let currentSlide = 0;
 
     function nextSlide() {
-        // Remove active class from current
         aboutSlides[currentSlide].classList.remove('active');
-        // Calculate next slide index
         currentSlide = (currentSlide + 1) % aboutSlides.length;
-        // Add active class to next
         aboutSlides[currentSlide].classList.add('active');
     }
 
-    // Change slide every 4 seconds
     setInterval(nextSlide, 4000);
 }
 
-// --- Guestbook / Feedback Logic ---
-const guestbookForm = document.getElementById('guestbook-form');
-const commentsList = document.getElementById('comments-list');
+// --- CLOUD FIREBASE GUESTBOOK LOGIC (Global) ---
+document.addEventListener('DOMContentLoaded', () => {
+    const guestbookForm = document.getElementById('guestbook-form');
+    const commentsList = document.getElementById('comments-list');
 
-// Load comments on start
-loadComments();
+    // Realtime Listener for Messages
+    if (commentsList) {
+        const q = query(collection(db, "messages"), orderBy("timestamp", "desc"));
+        onSnapshot(q, (snapshot) => {
+            const comments = snapshot.docs.map(doc => ({
+                id: doc.id,
+                ...doc.data()
+            }));
 
-if (guestbookForm) {
-    guestbookForm.addEventListener('submit', function (e) {
-        e.preventDefault();
-
-        const nameInput = document.getElementById('guest-name');
-        const msgInput = document.getElementById('guest-message');
-
-        if (nameInput.value && msgInput.value) {
-            const newComment = {
-                name: nameInput.value,
-                message: msgInput.value,
-                date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' })
-            };
-
-            saveComment(newComment);
-            nameInput.value = '';
-            msgInput.value = '';
-
-            // Re-load to show new comment
-            loadComments();
-        }
-    });
-}
-
-function saveComment(comment) {
-    let comments = JSON.parse(localStorage.getItem('site_comments')) || [];
-    comments.unshift(comment); // Add to top
-    localStorage.setItem('site_comments', JSON.stringify(comments));
-}
-
-function loadComments() {
-    if (!commentsList) return;
-
-    let comments = JSON.parse(localStorage.getItem('site_comments')) || [];
-
-    if (comments.length === 0) {
-        commentsList.innerHTML = '<div class="empty-state">Belum ada pesan. Jadilah yang pertama!</div>';
-        return;
+            if (comments.length === 0) {
+                commentsList.innerHTML = '<div class="empty-state">Belum ada pesan. Jadilah yang pertama!</div>';
+            } else {
+                commentsList.innerHTML = comments.map(c => `
+                    <div class="comment-item">
+                        <div class="comment-header">
+                            <span class="comment-name">${escapeHtml(c.name)}</span>
+                            <span class="comment-date">${c.date || 'Baru Saja'}</span>
+                        </div>
+                        <div class="comment-body">${escapeHtml(c.message)}</div>
+                    </div>
+                `).join('');
+            }
+        }, (error) => {
+            console.error("Error reading messages:", error);
+            commentsList.innerHTML = '<div class="empty-state">Gagal memuat pesan (Cek koneksi).</div>';
+        });
     }
 
-    commentsList.innerHTML = comments.map(c => `
-        <div class="comment-item">
-            <div class="comment-header">
-                <span class="comment-name">${escapeHtml(c.name)}</span>
-                <span class="comment-date">${c.date}</span>
-            </div>
-            <div class="comment-body">${escapeHtml(c.message)}</div>
-        </div>
-    `).join('');
+    // Handle Submission
+    if (guestbookForm) {
+        guestbookForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+
+            const nameInput = document.getElementById('guest-name');
+            const msgInput = document.getElementById('guest-message');
+
+            if (nameInput.value.trim() && msgInput.value.trim()) {
+                const btn = guestbookForm.querySelector('button');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = 'Sending...';
+                btn.disabled = true;
+
+                try {
+                    // Create a timeout promise (30 seconds)
+                    const timeout = new Promise((_, reject) =>
+                        setTimeout(() => reject(new Error("Timeout! Cek koneksi internet atau Firewall.")), 30000)
+                    );
+
+                    // Race between addDoc and timeout
+                    await Promise.race([
+                        addDoc(collection(db, "messages"), {
+                            name: nameInput.value.trim(),
+                            message: msgInput.value.trim(),
+                            date: new Date().toLocaleDateString('id-ID', { day: 'numeric', month: 'short', year: 'numeric' }),
+                            timestamp: serverTimestamp()
+                        }),
+                        timeout
+                    ]);
+
+                    nameInput.value = '';
+                    msgInput.value = '';
+                    showToast("Pesan Terkirim ke Cloud! Muncul untuk semua orang.", "success");
+                } catch (err) {
+                    console.error("Error adding message: ", err);
+                    showToast("Gagal kirim: " + err.message, "error");
+                } finally {
+                    btn.innerHTML = originalText;
+                    btn.disabled = false;
+                }
+            }
+        });
+    }
+});
+
+// Modern Toast Notification Function
+function showToast(message, type = 'success') {
+    // Create container if not exists
+    let container = document.querySelector('.toast-container');
+    if (!container) {
+        container = document.createElement('div');
+        container.className = 'toast-container';
+        document.body.appendChild(container); // Append to body, not inside other elements
+    }
+
+    // Create Toast Element
+    const toast = document.createElement('div');
+    toast.className = `toast ${type}`;
+
+    // Icon based on type
+    const icon = type === 'success' ? '<i class="fas fa-check-circle"></i>' : '<i class="fas fa-exclamation-circle"></i>';
+
+    toast.innerHTML = `${icon} <span>${message}</span>`;
+
+    container.appendChild(toast);
+
+    // Remove after 4 seconds
+    setTimeout(() => {
+        toast.style.animation = 'slideOutToast 0.4s forwards';
+        setTimeout(() => toast.remove(), 400); // Wait for animation
+    }, 4000);
 }
 
 // Security helper
 function escapeHtml(text) {
+    if (!text) return "";
     return text
         .replace(/&/g, "&amp;")
         .replace(/</g, "&lt;")
@@ -427,29 +476,22 @@ function createFloatingIcons() {
     for (let i = 0; i < count; i++) {
         const iconClass = icons[Math.floor(Math.random() * icons.length)];
         const icon = document.createElement('i');
-        // Handle both fas and fab prefixes by checking the icon name
         const prefix = (iconClass === 'fa-satellite' || iconClass === 'fa-code' || iconClass === 'fa-laptop-code' || iconClass === 'fa-rocket') ? 'fas' : 'fab';
 
         icon.classList.add(prefix, iconClass, 'floating-icon');
-
-        // Random Position
         icon.style.left = Math.random() * 100 + 'vw';
         icon.style.top = Math.random() * 100 + 'vh';
 
-        // Random Size
-        const size = Math.random() * 2 + 1; // 1rem to 3rem
+        const size = Math.random() * 2 + 1;
         icon.style.fontSize = size + 'rem';
 
-        // Random Duration
-        const duration = Math.random() * 20 + 10; // 10s to 30s
+        const duration = Math.random() * 20 + 10;
         icon.style.animationDuration = duration + 's';
 
-        // Random Delay
         icon.style.animationDelay = Math.random() * 5 + 's';
 
         container.appendChild(icon);
     }
 }
 
-// Initialize floating icons
 createFloatingIcons();
