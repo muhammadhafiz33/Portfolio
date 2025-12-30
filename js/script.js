@@ -414,3 +414,42 @@ function escapeHtml(text) {
         .replace(/"/g, "&quot;")
         .replace(/'/g, "&#039;");
 }
+
+// --- Floating Background Icons ---
+function createFloatingIcons() {
+    const icons = [
+        'fa-satellite', 'fa-html5', 'fa-react', 'fa-js', 'fa-css3-alt',
+        'fa-code', 'fa-laptop-code', 'fa-rocket'
+    ];
+    const container = document.body;
+    const count = 15; // Number of floating icons
+
+    for (let i = 0; i < count; i++) {
+        const iconClass = icons[Math.floor(Math.random() * icons.length)];
+        const icon = document.createElement('i');
+        // Handle both fas and fab prefixes by checking the icon name
+        const prefix = (iconClass === 'fa-satellite' || iconClass === 'fa-code' || iconClass === 'fa-laptop-code' || iconClass === 'fa-rocket') ? 'fas' : 'fab';
+
+        icon.classList.add(prefix, iconClass, 'floating-icon');
+
+        // Random Position
+        icon.style.left = Math.random() * 100 + 'vw';
+        icon.style.top = Math.random() * 100 + 'vh';
+
+        // Random Size
+        const size = Math.random() * 2 + 1; // 1rem to 3rem
+        icon.style.fontSize = size + 'rem';
+
+        // Random Duration
+        const duration = Math.random() * 20 + 10; // 10s to 30s
+        icon.style.animationDuration = duration + 's';
+
+        // Random Delay
+        icon.style.animationDelay = Math.random() * 5 + 's';
+
+        container.appendChild(icon);
+    }
+}
+
+// Initialize floating icons
+createFloatingIcons();
