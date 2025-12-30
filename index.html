@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio | Professional Web Developer</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="container nav-content">
+            <a href="#" class="logo">Portfolio.</a>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#contact" class="btn-primary">Contact</a></li>
+                <li>
+                    <button id="theme-toggle" class="theme-btn" aria-label="Toggle Dark Mode">
+                        <span class="switch-knob">
+                            <i class="fas fa-moon"></i>
+                        </span>
+                    </button>
+                </li>
+            </ul>
+            <div class="menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+                <span class="greeting">Hello, I'm</span>
+                <h1>Hafiz</h1>
+                <h2 class="role">Professional <span class="highlight">Web Developer</span></h2>
+                <p>Building modern, aesthetic, and functional web applications with a focus on user experience.</p>
+                <div class="hero-btns">
+                    <a href="#contact" class="btn-primary">Hire Me</a>
+                    <a href="#experience" class="btn-secondary">View Work</a>
+                </div>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-linkedin"></i></a>
+                    <a href="#"><i class="fab fa-github"></i></a>
+                    <a href="#"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <!-- Profile image -->
+                <div class="image-blob">
+                    <img src="assets/profile-photo.png" alt="Profile Photo">
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="section">
+        <div class="container">
+            <h2 class="section-title">About Me</h2>
+            <div class="about-content">
+                <p>I am a final-year <strong>Informatics Engineering student at Institut Teknologi Padang</strong>.
+                    Passionate about software development, I specialize in building responsive web applications. I am
+                    currently seeking opportunities to apply my skills and contribute to innovative projects.</p>
+                <div class="stats">
+                    <div class="stat-item">
+                        <h3>2+</h3>
+                        <p>Years Experience</p>
+                    </div>
+                    <div class="stat-item">
+                        <h3>20+</h3>
+                        <p>Projects Completed</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Experience</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">August - September 2025</div>
+                    <div class="timeline-content">
+                        <h3>Fullstack Developer Intern</h3>
+                        <h4>Dinas Kominfo Kota Bukittinggi</h4>
+                        <p>Developed a "Sistem Jurnal Kerja Praktek Fullstack" (Fullstack Internship Journal System)
+                            using <strong>React, Tailwind CSS, and Vite</strong>. Designed and implemented both frontend
+                            and backend architectures to streamline internship reporting and monitoring processes.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-date">2022 - 2024</div>
+                    <div class="timeline-content">
+                        <h3>Web Development Student</h3>
+                        <h4>University Projects</h4>
+                        <p>Completed various projects including e-commerce platforms and management systems.
+                            Focused on mastering HTML, CSS, JavaScript, and Node.js.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education" class="section">
+        <div class="container">
+            <h2 class="section-title">Education</h2>
+            <div class="cards-grid">
+                <div class="card">
+                    <i class="fas fa-graduation-cap card-icon"></i>
+                    <h3>Currently pursuing a Bachelor's degree in Informatics Engineering </h3>
+                    <h4>Padang Institute of Technology</h4>
+                    <span class="date">2022 - Coming Soon</span>
+                    <p>Focusing on Software Engineering and Web Technologies. Hopefully, I'll graduate.</p>
+                </div>
+                <div class="card">
+                    <i class="fas fa-certificate card-icon"></i>
+                    <h3>Vocational Competency Certificate</h3>
+                    <h4>SMKN 1 BATIPUH</h4>
+                    <span class="date">2021</span>
+                    <p>Computer and Informatics Engineering Program.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Skills Section -->
+    <section id="skills" class="section bg-light">
+        <div class="container">
+            <h2 class="section-title">Technical Skills</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Frontend</h3>
+                    <div class="tags">
+                        <span data-tooltip="HTML5"><i class="fab fa-html5"></i></span>
+                        <span data-tooltip="CSS3"><i class="fab fa-css3-alt"></i></span>
+                        <span data-tooltip="JavaScript"><i class="fab fa-js"></i></span>
+                        <span data-tooltip="React"><i class="fab fa-react"></i></span>
+                        <span data-tooltip="Tailwind CSS"><i class="fas fa-wind"></i></span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Backend & Tools</h3>
+                    <div class="tags">
+                        <span data-tooltip="Node.js"><i class="fab fa-node-js"></i></span>
+                        <span data-tooltip="Git/GitHub"><i class="fab fa-github"></i></span>
+                        <span data-tooltip="Figma"><i class="fab fa-figma"></i></span>
+                        <span data-tooltip="VS Code"><i class="fas fa-code"></i></span>
+                    </div>
+                </div>
+                <div class="skill-category">
+                    <h3>Soft Skills</h3>
+                    <div class="tags">
+                        <span data-tooltip="Communication"><i class="fas fa-comments"></i></span>
+                        <span data-tooltip="Teamwork"><i class="fas fa-users"></i></span>
+                        <span data-tooltip="Problem Solving"><i class="fas fa-lightbulb"></i></span>
+                        <span data-tooltip="Time Management"><i class="fas fa-clock"></i></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GitHub Contribution Section -->
+    <section id="github" class="section">
+        <div class="container">
+            <h2 class="section-title">GitHub Activity</h2>
+            <div class="github-container">
+                <p class="section-subtitle">Monthly Contributions (2025)</p>
+
+                <div class="chart-wrapper">
+                    <svg class="chart-svg" viewBox="0 0 1200 400">
+                        <!-- Grid Lines (optional background) -->
+                        <line x1="50" y1="100" x2="1150" y2="100" stroke="#e2e8f0" stroke-width="1"
+                            stroke-dasharray="5,5" />
+                        <line x1="50" y1="200" x2="1150" y2="200" stroke="#e2e8f0" stroke-width="1"
+                            stroke-dasharray="5,5" />
+                        <line x1="50" y1="300" x2="1150" y2="300" stroke="#e2e8f0" stroke-width="1"
+                            stroke-dasharray="5,5" />
+
+                        <!-- The Line -->
+                        <polyline points="
+                            50,280 
+                            150,200 
+                            250,240 
+                            350,150 
+                            450,260 
+                            550,180 
+                            650,210 
+                            750,130 
+                            850,250 
+                            950,230 
+                            1050,190 
+                            1150,120
+                        " fill="none" class="chart-line" />
+
+                        <!-- Data Points -->
+                        <circle cx="50" cy="280" r="6" class="chart-point" data-tooltip="Jan: 32 Commits" />
+                        <circle cx="150" cy="200" r="6" class="chart-point" data-tooltip="Feb: 65 Commits" />
+                        <circle cx="250" cy="240" r="6" class="chart-point" data-tooltip="Mar: 48 Commits" />
+                        <circle cx="350" cy="150" r="6" class="chart-point" data-tooltip="Apr: 95 Commits" />
+                        <circle cx="450" cy="260" r="6" class="chart-point" data-tooltip="May: 38 Commits" />
+                        <circle cx="550" cy="180" r="6" class="chart-point" data-tooltip="Jun: 82 Commits" />
+                        <circle cx="650" cy="210" r="6" class="chart-point" data-tooltip="Jul: 58 Commits" />
+                        <circle cx="750" cy="130" r="6" class="chart-point" data-tooltip="Aug: 110 Commits" />
+                        <circle cx="850" cy="250" r="6" class="chart-point" data-tooltip="Sep: 42 Commits" />
+                        <circle cx="950" cy="230" r="6" class="chart-point" data-tooltip="Oct: 55 Commits" />
+                        <circle cx="1050" cy="190" r="6" class="chart-point" data-tooltip="Nov: 75 Commits" />
+                        <circle cx="1150" cy="120" r="6" class="chart-point" data-tooltip="Dec: 125 Commits" />
+
+                        <!-- Month Labels -->
+                        <text x="50" y="380" text-anchor="middle" class="chart-label">Jan</text>
+                        <text x="150" y="380" text-anchor="middle" class="chart-label">Feb</text>
+                        <text x="250" y="380" text-anchor="middle" class="chart-label">Mar</text>
+                        <text x="350" y="380" text-anchor="middle" class="chart-label">Apr</text>
+                        <text x="450" y="380" text-anchor="middle" class="chart-label">May</text>
+                        <text x="550" y="380" text-anchor="middle" class="chart-label">Jun</text>
+                        <text x="650" y="380" text-anchor="middle" class="chart-label">Jul</text>
+                        <text x="750" y="380" text-anchor="middle" class="chart-label">Aug</text>
+                        <text x="850" y="380" text-anchor="middle" class="chart-label">Sep</text>
+                        <text x="950" y="380" text-anchor="middle" class="chart-label">Oct</text>
+                        <text x="1050" y="380" text-anchor="middle" class="chart-label">Nov</text>
+                        <text x="1150" y="380" text-anchor="middle" class="chart-label">Dec</text>
+                    </svg>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <h2 class="section-title">Services</h2>
+            <div class="services-grid">
+                <!-- Web Service -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-laptop-code"></i></div>
+                    <h3>Web Development</h3>
+                    <p>Professional website creation to showcase your work or business.</p>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Portfolio Website</li>
+                        <li><i class="fas fa-check"></i> Landing Page</li>
+                        <li><i class="fas fa-check"></i> Company Profile</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary service-btn">Order Website</a>
+                </div>
+
+                <!-- Design Service -->
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-paint-brush"></i></div>
+                    <h3>Graphic Design</h3>
+                    <p>Creative visual solutions for your brand coverage and marketing.</p>
+                    <ul class="service-list">
+                        <li><i class="fas fa-check"></i> Logo Design</li>
+                        <li><i class="fas fa-check"></i> Banner / Spanduk</li>
+                        <li><i class="fas fa-check"></i> Sticker & Merell</li>
+                    </ul>
+                    <a href="#contact" class="btn-primary service-btn">Order Design</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="section">
+        <div class="container">
+            <h2 class="section-title">Get In Touch</h2>
+            <div class="contact-card-minimal">
+                <p class="contact-text">Feel free to reach out for collaborations or just to say hi!</p>
+
+                <div class="contact-methods">
+                    <div class="contact-pill" onclick="togglePill(this)">
+                        <i class="fas fa-envelope"></i>
+                        <span class="pill-text">ADALAH POKOKNYA</span>
+                    </div>
+                    <div class="contact-pill" onclick="togglePill(this)">
+                        <i class="fab fa-whatsapp"></i>
+                        <span class="pill-text">+62 ADALAH POKOKNYA</span>
+                    </div>
+                    <div class="contact-pill" onclick="togglePill(this)">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span class="pill-text">Padang, Sumatera Barat</span>
+                    </div>
+                </div>
+
+                <div class="social-minimal">
+                    <a href="https://linkedin.com" target="_blank" class="icon-btn" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="https://github.com" target="_blank" class="icon-btn" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                    <a href="#" target="_blank" class="icon-btn" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 Copyright by Hafiz.</p>
+        </div>
+    </footer>
+
+    <!-- Robot Mascot -->
+    <!-- Robot Mascot -->
+    <div id="robot-mascot" class="robot-container">
+        <div class="robot-character">
+            <div class="robot-antenna left"></div>
+            <div class="robot-antenna right"></div>
+            <div class="robot-head">
+                <div class="robot-ear left"></div>
+                <div class="robot-ear right"></div>
+                <div class="robot-face">
+                    <div class="robot-eyes">
+                        <div class="eye left">
+                            <div class="eye-shine"></div>
+                        </div>
+                        <div class="eye right">
+                            <div class="eye-shine"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="robot-body-shape">
+                <div class="chest-panel">
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                    <span class="dot"></span>
+                </div>
+                <div class="robot-arm left"></div>
+                <div class="robot-arm right">
+                    <div class="robot-hand">
+                        <div class="finger"></div>
+                        <div class="finger"></div>
+                        <div class="finger"></div>
+                    </div>
+                </div>
+                <div class="robot-leg left"></div>
+                <div class="robot-leg right"></div>
+            </div>
+        </div>
+        <div class="robot-tooltip">Halo sanak</div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+
+</html>
