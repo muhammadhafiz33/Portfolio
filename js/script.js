@@ -164,23 +164,27 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 3000); // Toggle every 3 seconds
     }
 
-    // Visitor Counter Simulation
+    // Realtime Visitor Counter (using CountAPI)
     const countDisplay = document.getElementById('visitor-count');
     if (countDisplay) {
-        // Base count starts from zero
-        const baseCount = 0;
+        // Unique identifier for this project
+        const namespace = 'hafiz-portfolio-project-v1';
+        const key = 'visits';
 
-        // Get actual visits from local storage
-        let localVisits = localStorage.getItem('site_visits');
-        if (!localVisits) localVisits = 0;
-
-        // Increment
-        localVisits = parseInt(localVisits) + 1;
-        localStorage.setItem('site_visits', localVisits);
-
-        // Display total
-        const totalViews = baseCount + localVisits;
-        countDisplay.textContent = totalViews.toString();
+        // Try to get global count
+        fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`)
+            .then(response => response.json())
+            .then(data => {
+                countDisplay.textContent = data.value;
+            })
+            .catch(error => {
+                console.log('Counter API unavailable, using local fallback');
+                // Fallback: Use local storage if API is blocked/down
+                let localVisits = localStorage.getItem('site_visits') || 0;
+                localVisits = parseInt(localVisits) + 1;
+                localStorage.setItem('site_visits', localVisits);
+                countDisplay.textContent = localVisits;
+            });
     }
 });
 
